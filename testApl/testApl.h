@@ -25,7 +25,6 @@ public:
 	virtual BOOL InitInstance();
 
 // ŽÀ‘•
-
 	DECLARE_MESSAGE_MAP()
 };
 
