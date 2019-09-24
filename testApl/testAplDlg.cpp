@@ -171,13 +171,20 @@ bool CtestAplDlg::readDictionaryData(const std::wstring & dicFile, std::wstring 
 
     // todo：↓のコードでは、ファイルが開けない
     CString readStr;
-    cFile.ReadString(readStr);
+    BYTE byRead[1024];
+    ZeroMemory(byRead, sizeof(byRead));
+    cFile.Read(byRead, _countof(byRead));
     cFile.Close();
-    if (readStr.IsEmpty()){
-        AfxMessageBox(L"単語ファイルがありませんでした。");
-        return false;
+
+    readStr = reinterpret_cast<LPCTSTR>(byRead);
+    
+    LPCWSTR pSeparator = nullptr;
+    LPCWSTR pLast = readStr;
+    while (pSeparator = wcsstr(readStr, L"\r\n")) {
+        size_t szLength = pSeparator - pLast;
+        pLast = pSeparator;
     }
-    titleWord = readStr;
+
     return true;
 }
 
