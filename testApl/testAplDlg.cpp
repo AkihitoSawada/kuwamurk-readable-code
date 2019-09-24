@@ -101,6 +101,7 @@ BOOL CtestAplDlg::OnInitDialog()
 	SetIcon(m_hIcon, FALSE);		// 小さいアイコンの設定
 
 	// TODO: 初期化をここに追加します。
+    // 見出し語Editを初期化
     m_wordTitleEdit.SetWindowText(L"上手");
 
 	return TRUE;  // フォーカスをコントロールに設定した場合を除き、TRUE を返します。
